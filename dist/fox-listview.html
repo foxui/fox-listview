@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="css/fox-listview.css"/>
+
+/*fox-listview*/
+<fox-element name="fox-listview" attributes="contentselector">
+    <script>
+        (function(env){
+            var fox = env.fox;
+            fox('fox-listview', {
+                lifecycle: {
+                    created: function() {
+                        var foxCss = {};
+                        foxCss.menu_swipeLeft = function(){
+                            //获得class
+                            function getElementsByClassName(_className,_tag){
+                                var classElements=[],allElements= arguments.length > 1 ? document.getElementsByTagName(_tag) : document.getElementsByTagName('*');
+                                for(var i=0;i<allElements.length;i++){
+                                    if(allElements[i].className == _className){
+                                        classElements[classElements.length]=allElements[i];
+                                    }
+                                }
+                                return classElements;
+                            }
+                            /*swipe to show item-menu*/
+                            var swipeDoms = getElementsByClassName("swipe-left","a");
+                            var touchStart = function(e){
+                                isdrag = true;
+                                e.preventDefault();
+                                var touch = e.touches[0];
+                                startX = touch.pageX;
+                                if(this.style.left < 0){
+
+                                }
+                            };
+                            var touchMove = function(e){
+                                if (isdrag){
+                                    e.preventDefault();//阻止滚动
+                                    var touch = e.touches[0];
+                                    var x = touch.pageX - startX;
+                                    this.style.left = x + 'px';
+                                    if(x <= -135){
+                                        tl = -135 + 'px';
+                                        isdrag = false;
+                                    }else if(x > 0){
+                                        isdrag = false;
+                                    }else {
+                                        isdrag = true;
+                                    }
+                                }
+                            }
+                            var L = swipeDoms.length;
+                            for(var i = 0; i < L; i++){
+                                swipeDoms[i].addEventListener('touchstart',touchStart);
+                                swipeDoms[i].addEventListener('touchmove',touchMove);
+                                swipeDoms[i].addEventListener('touchend',function(){
+
+                                });
+                            }
+                        }
+
+                        foxCss.menu_swipeLeft();
+                    }
+                }
+            });
+        })(this);
+    </script>
+    </fox-element>
