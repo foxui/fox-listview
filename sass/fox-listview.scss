@@ -17,6 +17,7 @@
 
 .fox-theme-ios{
   background-color: #efeff4;
+  font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
   .fox-listview {
     padding-left: 0;
     margin-top: 30px;
@@ -27,7 +28,14 @@
     .item-tail{
       padding: 11px 30px 11px 0px;
       border-bottom: 1px solid #ddd;
-      font: 12px/18px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
+      .item-icon{
+        padding: 0;
+      }
+      [class*="button"] {
+        bottom: 6px;
+        [class*="icon"] {
+        }
+      }
     }
     li {
       position: relative;
@@ -78,7 +86,6 @@
         -webkit-flex: 1;
         flex: 1;
         -webkit-box-flex: 1;
-        font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
       }
       &:last-child{
         border-bottom: 1px solid #ddd;
@@ -102,7 +109,6 @@
           -webkit-flex: 1;
           flex: 1;
           -webkit-box-flex: 1;
-          font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
           line-height: 46px;
           &.b-red{
             background-color: red;
@@ -196,7 +202,6 @@
       float: right;
       padding: 0 5px;
       color: #888;
-      font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
     }
     /* toggle */
     fox-toggle{
@@ -205,7 +210,48 @@
       position: absolute;
     }
   }
-
+  [class*="button"] {
+    position: relative;
+    border-radius: 3px;
+    text-align: center;
+    padding: 0px 12px;
+  }
+  .button-block-full{
+    display: block;
+    width: 90%;
+    height: 46px;
+    line-height: 46px;
+    margin: 0 auto;
+    background: #5890AD;
+    color: #fff;
+  }
+  .button-block-border{
+    display: block;
+    width: 90%;
+    height: 46px;
+    line-height: 46px;
+    margin: 0 auto;
+    background: #fff;
+    color: #5890AD;
+    border: 1px solid #5890AD;
+  }
+  .button-mini-full{
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+    margin: 0 auto;
+    background: #5890AD;
+    color: #fff;
+  }
+  .button-mini-border{
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+    margin: 0 auto;
+    background: #fff;
+    color: #5890AD;
+    border: 1px solid #5890AD;
+  }
 }
 
 

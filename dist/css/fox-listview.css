@@ -11,6 +11,7 @@
 /*foxui listview style -- jalon*/
 .fox-theme-ios {
   background-color: #efeff4;
+  font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .fox-theme-ios .fox-listview {
   padding-left: 0;
@@ -30,7 +31,12 @@
 .fox-theme-ios .fox-listview .item-tail {
   padding: 11px 30px 11px 0px;
   border-bottom: 1px solid #ddd;
-  font: 12px/18px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.fox-theme-ios .fox-listview .item-tail .item-icon {
+  padding: 0;
+}
+.fox-theme-ios .fox-listview .item-tail [class*="button"] {
+  bottom: 6px;
 }
 .fox-theme-ios .fox-listview li {
   position: relative;
@@ -83,7 +89,6 @@
   -webkit-flex: 1;
   flex: 1;
   -webkit-box-flex: 1;
-  font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .fox-theme-ios .fox-listview li:last-child {
   border-bottom: 1px solid #ddd;
@@ -116,7 +121,6 @@
   -webkit-flex: 1;
   flex: 1;
   -webkit-box-flex: 1;
-  font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
   line-height: 46px;
 }
 .fox-theme-ios .fox-listview li .item-menu span.b-red {
@@ -199,10 +203,51 @@
   float: right;
   padding: 0 5px;
   color: #888;
-  font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .fox-theme-ios .fox-listview fox-toggle {
   top: 8px;
   right: 20px;
   position: absolute;
+}
+.fox-theme-ios [class*="button"] {
+  position: relative;
+  border-radius: 3px;
+  text-align: center;
+  padding: 0px 12px;
+}
+.fox-theme-ios .button-block-full {
+  display: block;
+  width: 90%;
+  height: 46px;
+  line-height: 46px;
+  margin: 0 auto;
+  background: #5890AD;
+  color: #fff;
+}
+.fox-theme-ios .button-block-border {
+  display: block;
+  width: 90%;
+  height: 46px;
+  line-height: 46px;
+  margin: 0 auto;
+  background: #fff;
+  color: #5890AD;
+  border: 1px solid #5890AD;
+}
+.fox-theme-ios .button-mini-full {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  margin: 0 auto;
+  background: #5890AD;
+  color: #fff;
+}
+.fox-theme-ios .button-mini-border {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+  margin: 0 auto;
+  background: #fff;
+  color: #5890AD;
+  border: 1px solid #5890AD;
 }
