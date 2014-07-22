@@ -50,7 +50,7 @@
                                 swipeDoms[i].addEventListener('touchmove',touchMove);
                                 swipeDoms[i].addEventListener('touchend',function(){
                                     isdrag = false;
-                                    if(parseInt(this.style.left) > 0){
+                                    if(parseInt(this.style.left) > 2){
                                         this.style.left = "0px";
                                     }
                                 });
