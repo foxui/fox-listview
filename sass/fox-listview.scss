@@ -4,7 +4,7 @@ $main-color: #096;
   border-radius: $radius;
   -webkit-border-radius: $radius;
 }
-@mixin flex-c(){
+@mixin flex-c-h(){
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -14,6 +14,17 @@ $main-color: #096;
   flex-direction: row;
   -webkit-flex-flow: row;
   flex-flow:row;
+}
+@mixin flex-c-v(){
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-flow: column;
+  flex-flow:column;
 }
 
 .fox-theme-ios{
@@ -38,12 +49,47 @@ $main-color: #096;
         }
       }
     }
+    li.item-cell {
+      @include flex-c-h();
+      span.cell-h {
+        display: inline-block;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-box-flex: 1;
+        text-align: center;
+        line-height: 46px;
+        border-right: 1px solid #dddddd;
+        @include flex-c-h();
+        span{
+          -webkit-flex: 1;
+          flex: 1;
+          -webkit-box-flex: 1;
+          text-align: center;
+        }
+      }
+      span.cell-v {
+        display: inline-block;
+        -webkit-flex: 1;
+        flex: 1;
+        -webkit-box-flex: 1;
+        text-align: center;
+        border-right: 1px solid #dddddd;
+        @include flex-c-v();
+        span{
+          -webkit-flex: 1;
+          flex: 1;
+          -webkit-box-flex: 1;
+          text-align: center;
+          &.tip-mini{
+            font-size: 12px;
+          }
+        }
+      }
+    }
     li {
       position: relative;
       width: 100%;
       height: 46px;
-      display: -webkit-flex;
-      display: flex;
       &:active{
         background-color: #dddddd;
         .item-body,.item-tail{
@@ -100,7 +146,7 @@ $main-color: #096;
         top: 0;
         height: 46px;
         color: #fff;
-        @include flex-c();
+        @include flex-c-h();
         span{
           display: block;
           width: 68px;
@@ -289,7 +335,7 @@ $main-color: #096;
     &:last-child {
       border-bottom: 1px solid #ddd;
     }
-    @include flex-c();
+    @include flex-c-h();
     label{
       width: 60px;
       height: 46px;
@@ -313,7 +359,7 @@ $main-color: #096;
       border-radius: 5px;
       background: #fff;
       height: 32px;
-      @include flex-c();
+      @include flex-c-h();
       label{
         width: 60px;
         height: 32px;
