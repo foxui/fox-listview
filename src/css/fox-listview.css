@@ -314,3 +314,35 @@
   -webkit-box-flex: 1;
   padding: 10px 0 10px 20px;
 }
+.fox-theme-ios .input-item .input-radius {
+  position: relative;
+  margin: 7px auto;
+  width: 96%;
+  border-radius: 5px;
+  background: #fff;
+  height: 32px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-flow: row;
+  flex-flow: row;
+}
+.fox-theme-ios .input-item .input-radius label {
+  width: 60px;
+  height: 32px;
+  line-height: 32px;
+  padding-left: 5px;
+}
+.fox-theme-ios .input-item .input-radius input[type="text"], .fox-theme-ios .input-item .input-radius input[type="password"] {
+  height: 32px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-box-flex: 1;
+  background: none;
+}
