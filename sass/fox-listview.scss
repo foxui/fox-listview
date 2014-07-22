@@ -225,6 +225,11 @@
     margin: 0 auto;
     background: #5890AD;
     color: #fff;
+    &:active{
+      background: #fff;
+      color: #5890AD;
+      border: 1px solid #5890AD;
+    }
   }
   .button-block-border{
     display: block;
@@ -235,6 +240,11 @@
     background: #fff;
     color: #5890AD;
     border: 1px solid #5890AD;
+    &:active{
+      background: #5890AD;
+      color: #fff;
+      border: 1px solid #fff;
+    }
   }
   .button-mini-full{
     display: inline-block;
@@ -243,6 +253,11 @@
     margin: 0 auto;
     background: #5890AD;
     color: #fff;
+    &:active{
+      background: #fff;
+      color: #5890AD;
+      border: 1px solid #5890AD;
+    }
   }
   .button-mini-border{
     display: inline-block;
@@ -252,6 +267,11 @@
     background: #fff;
     color: #5890AD;
     border: 1px solid #5890AD;
+    &:active{
+      background: #5890AD;
+      color: #fff;
+      border: 1px solid #fff;
+    }
   }
 }
 

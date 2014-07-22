@@ -225,6 +225,11 @@
   background: #5890AD;
   color: #fff;
 }
+.fox-theme-ios .button-block-full:active {
+  background: #fff;
+  color: #5890AD;
+  border: 1px solid #5890AD;
+}
 .fox-theme-ios .button-block-border {
   display: block;
   width: 90%;
@@ -235,6 +240,11 @@
   color: #5890AD;
   border: 1px solid #5890AD;
 }
+.fox-theme-ios .button-block-border:active {
+  background: #5890AD;
+  color: #fff;
+  border: 1px solid #fff;
+}
 .fox-theme-ios .button-mini-full {
   display: inline-block;
   height: 34px;
@@ -242,6 +252,11 @@
   margin: 0 auto;
   background: #5890AD;
   color: #fff;
+}
+.fox-theme-ios .button-mini-full:active {
+  background: #fff;
+  color: #5890AD;
+  border: 1px solid #5890AD;
 }
 .fox-theme-ios .button-mini-border {
   display: inline-block;
@@ -251,4 +266,9 @@
   background: #fff;
   color: #5890AD;
   border: 1px solid #5890AD;
+}
+.fox-theme-ios .button-mini-border:active {
+  background: #5890AD;
+  color: #fff;
+  border: 1px solid #fff;
 }
