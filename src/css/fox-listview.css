@@ -13,6 +13,42 @@
   background-color: #efeff4;
   font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
   /* button*/
+  /* input*/
+  /*  [class*="input"] {
+      position: relative;
+      border-radius: 3px;
+      text-align: center;
+      padding: 0px 12px;
+    }
+    .input-block-full{
+      display: block;
+      width: 90%;
+      height: 46px;
+      line-height: 46px;
+      margin: 0 auto;
+      background: $main-color;
+      color: #fff;
+      &:active{
+        background: #fff;
+        color: $main-color;
+        border: 1px solid $main-color;
+      }
+    }
+    .input-block-border{
+      display: block;
+      width: 90%;
+      height: 46px;
+      line-height: 46px;
+      margin: 0 auto;
+      background: #fff;
+      color: $main-color;
+      border: 1px solid $main-color;
+      &:active{
+        background: $main-color;
+        color: #fff;
+        border: 1px solid #fff;
+      }
+    }*/
 }
 .fox-theme-ios .fox-listview {
   padding-left: 0;
@@ -210,6 +246,10 @@
   right: 20px;
   position: absolute;
 }
+.fox-theme-ios button {
+  border: none;
+  outline: none;
+}
 .fox-theme-ios [class*="button"] {
   position: relative;
   border-radius: 3px;
@@ -222,13 +262,13 @@
   height: 46px;
   line-height: 46px;
   margin: 0 auto;
-  background: #5890AD;
+  background: #009966;
   color: #fff;
 }
 .fox-theme-ios .button-block-full:active {
   background: #fff;
-  color: #5890AD;
-  border: 1px solid #5890AD;
+  color: #009966;
+  border: 1px solid #009966;
 }
 .fox-theme-ios .button-block-border {
   display: block;
@@ -237,11 +277,11 @@
   line-height: 46px;
   margin: 0 auto;
   background: #fff;
-  color: #5890AD;
-  border: 1px solid #5890AD;
+  color: #009966;
+  border: 1px solid #009966;
 }
 .fox-theme-ios .button-block-border:active {
-  background: #5890AD;
+  background: #009966;
   color: #fff;
   border: 1px solid #fff;
 }
@@ -250,13 +290,13 @@
   height: 34px;
   line-height: 34px;
   margin: 0 auto;
-  background: #5890AD;
+  background: #009966;
   color: #fff;
 }
 .fox-theme-ios .button-mini-full:active {
   background: #fff;
-  color: #5890AD;
-  border: 1px solid #5890AD;
+  color: #009966;
+  border: 1px solid #009966;
 }
 .fox-theme-ios .button-mini-border {
   display: inline-block;
@@ -264,11 +304,22 @@
   line-height: 34px;
   margin: 0 auto;
   background: #fff;
-  color: #5890AD;
-  border: 1px solid #5890AD;
+  color: #009966;
+  border: 1px solid #009966;
 }
 .fox-theme-ios .button-mini-border:active {
-  background: #5890AD;
+  background: #009966;
   color: #fff;
   border: 1px solid #fff;
+}
+.fox-theme-ios .input-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-flow: row;
+  flex-flow: row;
 }
