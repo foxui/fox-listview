@@ -14,41 +14,6 @@
   font: 16px/24px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
   /* button*/
   /* input*/
-  /*  [class*="input"] {
-      position: relative;
-      border-radius: 3px;
-      text-align: center;
-      padding: 0px 12px;
-    }
-    .input-block-full{
-      display: block;
-      width: 90%;
-      height: 46px;
-      line-height: 46px;
-      margin: 0 auto;
-      background: $main-color;
-      color: #fff;
-      &:active{
-        background: #fff;
-        color: $main-color;
-        border: 1px solid $main-color;
-      }
-    }
-    .input-block-border{
-      display: block;
-      width: 90%;
-      height: 46px;
-      line-height: 46px;
-      margin: 0 auto;
-      background: #fff;
-      color: $main-color;
-      border: 1px solid $main-color;
-      &:active{
-        background: $main-color;
-        color: #fff;
-        border: 1px solid #fff;
-      }
-    }*/
 }
 .fox-theme-ios .fox-listview {
   padding-left: 0;
@@ -312,7 +277,14 @@
   color: #fff;
   border: 1px solid #fff;
 }
-.fox-theme-ios .input-box {
+.fox-theme-ios input {
+  outline: none;
+  border: none;
+}
+.fox-theme-ios .input-item {
+  position: relative;
+  background: #fff;
+  border-top: 1px solid #ddd;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -322,4 +294,23 @@
   flex-direction: row;
   -webkit-flex-flow: row;
   flex-flow: row;
+}
+.fox-theme-ios .input-item:last-child {
+  border-bottom: 1px solid #ddd;
+}
+.fox-theme-ios .input-item label {
+  width: 60px;
+  height: 46px;
+  line-height: 46px;
+  padding-left: 10px;
+}
+.fox-theme-ios .input-item input[type="text"], .fox-theme-ios .input-item input[type="password"] {
+  height: 46px;
+  line-height: 20px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-box-flex: 1;
+  padding: 10px 0 10px 20px;
 }
