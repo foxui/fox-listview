@@ -3,10 +3,10 @@
 /*fox-listview*/
 <fox-element name="fox-listview">
     <script>
-        (function(dev) {
-            dev.menu_swipeLeft = function() {
+        (function() {
+            menu_swipeLeft = function() {
                 /*swipe to show item-menu*/
-                var swipeDoms = document.querySelectorAll('a.swipe-left');
+                var swipeDoms = this.querySelectorAll('a.swipe-left');
                 var touchStart = function(e) {
                     isdrag = true;
                     e.preventDefault();
@@ -44,7 +44,13 @@
                 }
             }
 
-            dev.menu_swipeLeft();
-        })(this);
+            fox('fox-listview', {
+                lifecycle: {
+                    created: function() {
+                        menu_swipeLeft.call(this);
+                    }
+                }
+            });
+        })();
     </script>
     </fox-element>

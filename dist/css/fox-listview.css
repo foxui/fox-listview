@@ -107,7 +107,7 @@
   height: 46px;
 }
 .fox-theme-ios .fox-listview li:active {
-  background-color: #dddddd;
+  /*        background-color: #dddddd;*/
 }
 .fox-theme-ios .fox-listview li:active .item-body, .fox-theme-ios .fox-listview li:active .item-tail {
   border-bottom: 1px solid #dddddd;
