@@ -7,11 +7,12 @@
             var menu_swipeLeft = function() {
                 var swipeDoms = this.querySelectorAll('a.swipe-left');
                 var L = swipeDoms.length;
-                var translateX = 0;
+
                 var touchStart = function(e) {
+                    this.translateX = 0;
                     isdrag = true;
                     e.preventDefault();
-                    tp_startX = e.touches[0].pageX - translateX;   /*touch point*/
+                    tp_startX = e.touches[0].pageX - this.translateX;   /*touch point*/
                     x = e.touches[0].pageX;   /*touch point*/
                     y = e.touches[0].pageY;   /*touch point*/
                     var menu = this.nextElementSibling;
@@ -28,33 +29,40 @@
                         this.style.webkitTransform = 'translate3d('+ tp_length +'px, 0, 0)';
                         this.style.webkitTransition =  'none';
                         var reg= /\(([^,]+)+/g ;
-                        translateX = parseInt(reg.exec(this.style.webkitTransform)[1]);
+                        this.translateX = parseInt(reg.exec(this.style.webkitTransform)[1]);
                     }
                 }
 
                 var touchEnd = function() {
-                    if(translateX > -menuW/2 && translateX < 0) {
+                    if(this.translateX > -menuW/2 && this.translateX < 0) {
                         this.style.webkitTransform = 'translate3d(0, 0, 0)';
                         this.style.webkitTransition =  '300ms';
-                        translateX = 0;
-                    }else if(translateX > -menuW && translateX < -menuW/2){
+                        this.translateX = 0;
+                    }else if(this.translateX > -menuW && this.translateX < -menuW/2){
                         this.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
                         this.style.webkitTransition =  '300ms';
-                        translateX = -menuW;
-                        console.log(translateX);
-                    }else if(translateX <= -menuW) {
+                        this.translateX = -menuW;
+                    }else if(this.translateX <= -menuW) {
                         this.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
-                        translateX = -menuW;
-                    }else if(translateX > 0) {
+                        this.translateX = -menuW;
+                    }else if(this.translateX > 0) {
                         this.style.webkitTransform = 'translate3d(0px, 0, 0)';
                         this.style.webkitTransition =  '300ms';
-                        translateX = 0;
+                        this.translateX = 0;
                     }
                 }
+            /*    var comeback = function(e) {
+                    console.log("ttt")
+                    if (this.translateX == menuW) {
+                        alert("11")
+                        e.stopPropagation();
+                    }
+                }*/
                 for( var i = 0; i < L; i++ ) {
                     swipeDoms[i].addEventListener('touchstart', touchStart);
                     swipeDoms[i].addEventListener('touchmove', touchMove);
                     swipeDoms[i].addEventListener('touchend', touchEnd);
+
                 }
             }
 
