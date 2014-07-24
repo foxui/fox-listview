@@ -229,4 +229,16 @@
             </fox-page-content>
         </fox-page>
     </body>
+    <script>
+        document.addEventListener('HTMLImportsLoaded', function(){
+            document.body.removeAttribute('unresolved');
+        }, false);
+
+        document.addEventListener('change', function(e){
+            var target = e.target;
+            if (target.tagName.toLowerCase() === 'input') {
+                target.previousElementSibling.textContent = target.value;
+            }
+        }, false);
+    </script>
 </html>
