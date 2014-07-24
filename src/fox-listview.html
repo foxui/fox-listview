@@ -4,43 +4,56 @@
 <fox-element name="fox-listview">
     <script>
         (function() {
-            menu_swipeLeft = function() {
-                /*swipe to show item-menu*/
+            var menu_swipeLeft = function() {
                 var swipeDoms = this.querySelectorAll('a.swipe-left');
+                var L = swipeDoms.length;
+                var translateX = 0;
                 var touchStart = function(e) {
                     isdrag = true;
                     e.preventDefault();
-                    var touch = e.touches[0];
-                    startX = touch.pageX;
-                };
+                    tp_startX = e.touches[0].pageX - translateX;   /*touch point*/
+                    x = e.touches[0].pageX;   /*touch point*/
+                    y = e.touches[0].pageY;   /*touch point*/
+                    var menu = this.nextElementSibling;
+                    menuW = menu.children.length*68;
+                }
                 var touchMove = function(e) {
+                    if (Math.abs(e.touches[0].pageX - x) < Math.abs(e.touches[0].pageY - y)) {
+                        return;
+                    }
                     if (isdrag){
-                        e.preventDefault();//阻止滚动
-                        var touch = e.touches[0];
-                        var x = touch.pageX - startX;
-                        this.style.left = x + 'px';
-                        var menu = this.nextElementSibling;
-                        var menuW = menu.children.length*68;
-                        if(x <= -menuW){
-                            tl = -menuW + 'px';
-                            isdrag = false;
-                        }else if( x > 0 ){
-                            isdrag = false;
-                        }else {
-                            isdrag = true;
-                        }
+                        e.preventDefault();
+                        var tp_move = e.touches[0].pageX;   /*touch point move*/
+                        var tp_length = tp_move - tp_startX;
+                        this.style.webkitTransform = 'translate3d('+ tp_length +'px, 0, 0)';
+                        this.style.webkitTransition =  'none';
+                        var reg= /\(([^,]+)+/g ;
+                        translateX = parseInt(reg.exec(this.style.webkitTransform)[1]);
                     }
                 }
-                var L = swipeDoms.length;
+
+                var touchEnd = function() {
+                    if(translateX > -menuW/2 && translateX < 0) {
+                        this.style.webkitTransform = 'translate3d(0, 0, 0)';
+                        this.style.webkitTransition =  '300ms';
+                        translateX = 0;
+                    }else if(translateX > -menuW && translateX < -menuW/2){
+                        this.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
+                        this.style.webkitTransition =  '300ms';
+                        translateX = -menuW;
+                        console.log(translateX);
+                    }else if(translateX <= -menuW) {
+                        this.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
+                        translateX = -menuW;
+                    }else if(translateX > 0) {
+                        this.style.webkitTransform = 'translate3d(0px, 0, 0)';
+                        translateX = 0;
+                    }
+                }
                 for( var i = 0; i < L; i++ ) {
                     swipeDoms[i].addEventListener('touchstart', touchStart);
                     swipeDoms[i].addEventListener('touchmove', touchMove);
-                    swipeDoms[i].addEventListener('touchend', function() {
-                        isdrag = false;
-                        if(parseInt(this.style.left) >= 0) {
-                            this.style.left = '0px';
-                        }
-                    });
+                    swipeDoms[i].addEventListener('touchend', touchEnd);
                 }
             }
 
@@ -53,4 +66,4 @@
             });
         })();
     </script>
-    </fox-element>
+</fox-element>
