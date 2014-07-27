@@ -86,23 +86,7 @@
 
 
             }
-            /*item-menu action 接口*/
-            menuAction = function(actionClassName, cb) {
-                $('ul').tap(function(e) {
-                    var classNameArr = e.target.className.split(' ');
-                    var that = e.target;
-                    var L = classNameArr.length;
-                    for(var i = 0; i < L; i++) {
-                        if(classNameArr[i] == actionClassName) {
-                            cb(that);  /*把被点击的按钮传过去*/
-                        }
-                    }
-                });
-            } /*调用 menuAction(className[string], callback);
-             menuAction('delete',function() {
-                alert("after tap the delete button")
-             });
-            */
+
             fox('fox-listview', {
                 lifecycle: {
                     created: function() {
