@@ -5,17 +5,31 @@
     <script>
         (function() {
             var menu_swipeLeft = function() {
-                var swipeDoms = this.querySelectorAll('a.swipe-left');
+                var swipeDoms = this.querySelectorAll('ul');
                 var L = swipeDoms.length;
                 var translateX = 0, isopen = false;
+
                 var touchStart = function(e) {
-                    isdrag = true;
-                    e.preventDefault();
-                    tp_startX = e.touches[0].pageX - translateX;   /*touch point*/
-                    x = e.touches[0].pageX;   /*touch point*/
-                    y = e.touches[0].pageY;   /*touch point*/
-                    var menu = this.nextElementSibling;
-                    menuW = menu.children.length*68;
+                    var canSwipe = (function() {
+                        if(e.touches[0].target.parentNode.className == 'swipe-left') {
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    })();
+                    if(canSwipe) {
+                        isdrag = true;
+                        e.preventDefault();
+                        tp_startX = e.touches[0].pageX - translateX;   /*touch point*/
+                        x = e.touches[0].pageX;   /*touch point*/
+                        y = e.touches[0].pageY;   /*touch point*/
+                        var a = e.touches[0].target.parentNode;
+                        var menu = a.nextElementSibling;
+                        menuW = menu.children.length*68;
+                    }else{
+                        isdrag = false;
+                    }
+
                 }
                 var touchMove = function(e) {
                     if (Math.abs(e.touches[0].pageX - x) < Math.abs(e.touches[0].pageY - y)) {
@@ -26,35 +40,41 @@
                         isopen = false;
                         var tp_move = e.touches[0].pageX;   /*touch point move*/
                         var tp_length = tp_move - tp_startX;
-                        this.style.webkitTransform = 'translate3d('+ tp_length +'px, 0, 0)';
-                        this.style.webkitTransition =  'none';
+                        a = e.touches[0].target.parentNode;
+                        a.style.webkitTransform = 'translate3d('+ tp_length +'px, 0, 0)';
+                        a.style.webkitTransition =  'none';
                         var reg= /\(([^,]+)+/g ;
-                        translateX = parseInt(reg.exec(this.style.webkitTransform)[1]);
+                        translateX = parseInt(reg.exec(a.style.webkitTransform)[1]);
                     }
                 }
 
-                var touchEnd = function() {
+                var touchEnd = function(e) {
                     if(isopen == true) {
-                        this.style.webkitTransform = 'translate3d(0, 0, 0)';
-                        this.style.webkitTransition =  '300ms';
-                        translateX = 0;
+                        var sa = this.querySelectorAll('a.swipe-left');
+                        var  saL = sa.length;
+                        for(var i = 0; i < saL; i++){
+                            sa[i].style.webkitTransform = 'translate3d(0, 0, 0)';
+                            sa[i].style.webkitTransition =  '300ms';
+                            translateX = 0;
+                        }
+
                     }
                     if(translateX > -menuW/2 && translateX < 0) {
-                        this.style.webkitTransform = 'translate3d(0, 0, 0)';
-                        this.style.webkitTransition =  '300ms';
+                        a.style.webkitTransform = 'translate3d(0, 0, 0)';
+                        a.style.webkitTransition =  '300ms';
                         translateX = 0;
                     }else if(translateX > -menuW && translateX < -menuW/2){
-                        this.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
-                        this.style.webkitTransition =  '300ms';
+                        a.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
+                        a.style.webkitTransition =  '300ms';
                         translateX = -menuW;
                         isopen = true;
                     }else if(translateX <= -menuW) {
-                        this.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
+                        a.style.webkitTransform = 'translate3d(-'+ menuW +'px, 0, 0)';
                         translateX = -menuW;
                         isopen = true;
                     }else if(translateX > 0) {
-                        this.style.webkitTransform = 'translate3d(0, 0, 0)';
-                        this.style.webkitTransition =  '300ms';
+                        a.style.webkitTransform = 'translate3d(0, 0, 0)';
+                        a.style.webkitTransition =  '300ms';
                         translateX = 0;
                     }
                 }
@@ -62,13 +82,7 @@
                     swipeDoms[i].addEventListener('touchstart', touchStart);
                     swipeDoms[i].addEventListener('touchmove', touchMove);
                     swipeDoms[i].addEventListener('touchend', touchEnd);
-                     swipeDoms[i].nextElementSibling.addEventListener('touchend', function() {
-                     this.previousElementSibling.style.webkitTransform = 'translate3d(0, 0, 0)';
-                     this.previousElementSibling.style.webkitTransition =  '300ms';
-                     translateX = 0;
-                     });
                 }
-                /*touch the menu-item*/
 
 
             }
