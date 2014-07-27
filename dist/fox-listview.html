@@ -62,8 +62,15 @@
                     swipeDoms[i].addEventListener('touchstart', touchStart);
                     swipeDoms[i].addEventListener('touchmove', touchMove);
                     swipeDoms[i].addEventListener('touchend', touchEnd);
-
+                     swipeDoms[i].nextElementSibling.addEventListener('touchend', function() {
+                     this.previousElementSibling.style.webkitTransform = 'translate3d(0, 0, 0)';
+                     this.previousElementSibling.style.webkitTransition =  '300ms';
+                     translateX = 0;
+                     });
                 }
+                /*touch the menu-item*/
+
+
             }
 
             fox('fox-listview', {
