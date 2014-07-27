@@ -86,7 +86,22 @@
 
 
             }
-
+            /*item-menu action 接口*/
+            menuAction = function(actionClassName, func) {
+                $('.todo-list').tap(function(e) {
+                    var classNameArr = e.target.className.split(' ');
+                    var L = classNameArr.length;
+                    for(var i = 0; i < L; i++) {
+                        if(classNameArr[i] == actionClassName) {
+                            func();
+                        }
+                    }
+                });
+            } /*调用 menuAction(className[string], callback);
+             menuAction('delete',function() {
+                alert("after tap the delete button")
+             });
+            */
             fox('fox-listview', {
                 lifecycle: {
                     created: function() {
