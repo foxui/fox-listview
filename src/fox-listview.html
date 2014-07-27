@@ -87,13 +87,13 @@
 
             }
             /*item-menu action 接口*/
-            menuAction = function(actionClassName, func) {
-                $('.todo-list').tap(function(e) {
+            menuAction = function(actionClassName, cb) {
+                $('ul').tap(function(e) {
                     var classNameArr = e.target.className.split(' ');
                     var L = classNameArr.length;
                     for(var i = 0; i < L; i++) {
                         if(classNameArr[i] == actionClassName) {
-                            func();
+                            cb();
                         }
                     }
                 });
