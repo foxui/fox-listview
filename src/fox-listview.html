@@ -33,18 +33,17 @@
                 var touchMove = function(e) {
                     if (Math.abs(e.touches[0].pageX - x) < Math.abs(e.touches[0].pageY - y)) {
                         return;
-                    }else{
-                        if (isdrag){
-                            e.preventDefault();
-                            isopen = false;
-                            var tp_move = e.touches[0].pageX;   /*touch point move*/
-                            var tp_length = tp_move - tp_startX;
-                            a = e.touches[0].target.parentNode;
-                            a.style.webkitTransform = 'translate3d('+ tp_length +'px, 0, 0)';
-                            a.style.webkitTransition =  'none';
-                            var reg= /\(([^,]+)+/g ;
-                            translateX = parseInt(reg.exec(a.style.webkitTransform)[1]);
-                        }
+                    }
+                    if (isdrag){
+                        e.preventDefault();
+                        isopen = false;
+                        var tp_move = e.touches[0].pageX;   /*touch point move*/
+                        var tp_length = tp_move - tp_startX;
+                        a = e.touches[0].target.parentNode;
+                        a.style.webkitTransform = 'translate3d('+ tp_length +'px, 0, 0)';
+                        a.style.webkitTransition =  'none';
+                        var reg= /\(([^,]+)+/g ;
+                        translateX = parseInt(reg.exec(a.style.webkitTransform)[1]);
                     }
                 }
 
